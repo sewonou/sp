@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+
+<h1>Extraction des données de phpsreadsheet</h1>
+<div class="table-responsive">
+    <table class="table table-hover">
+        {% if lists is not null %}
+            {% for list in lists %}
+                {% if loop.first %}
+                    <thead>
+                        <tr class="table-primary">
+                            <th scope="col">Index </th>
+                            {% for title in list %}
+                            <th scope="col">{{ title }}</th>
+                            {% endfor %}
+                        </tr>
+                    </thead>
+                {% else %}
+                    <tbody>
+                    <tr>
+                        <td>{{ loop.index0 }}</td>
+                        {% for element in list %}
+                        <td>{{ element }}</td>
+                        {% endfor %}
+                    </tr>
+                    </tbody>
+                {% endif %}
+            {% endfor %}
+        {% else %}
+            <tbody>
+                <tr class="table-active">Aucune donnée extraite</tr>
+            </tbody>
+        {% endif %}
+    </table>
+</div>
+{% endblock %}

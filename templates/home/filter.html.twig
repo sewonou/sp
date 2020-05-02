@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Filter Reading {% endblock %}
+
+{% block body %}
+
+    <h1>Extraction des données Test</h1>
+    <div class="">
+
+        <table border="1">
+
+            <tbody>
+            {% if list is not null %}
+                {% for l in list %}
+                    <tr>
+                        {% for this in l %}
+                            <td>
+                                {{ this[] }}
+                            </td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <tr>Aucune donnée extraite</tr>
+            {% endif %}
+            </tbody>
+
+        </table>
+    </div>
+{% endblock %}
